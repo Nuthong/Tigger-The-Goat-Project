@@ -1,0 +1,39 @@
+# Local stack: PostgreSQL + API.  ใช้สำหรับ dev/demo ในเครื่อง
+# ก่อนใช้จริง: docker compose up -d db  แล้วโหลด schema:
+#   docker compose exec -T db psql -U postgres -d roombooking < ../03-database/schema.sql
+#   ... roles.sql, seed.sql  (ดู scripts/init_db.sh)
+name: roombooking
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: roombooking
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d roombooking"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    environment:
+      # dev only — ในเครื่องต่อ postgres ตรง ๆ; production ใช้ role app_rw + Neon
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/roombooking
+      JWT_SECRET: dev-only-secret-change-me-0123456789abcdef
+      CORS_ORIGINS: http://localhost:5173
+      ENVIRONMENT: local
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

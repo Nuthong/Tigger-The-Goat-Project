@@ -1,0 +1,136 @@
+# Full stack for local demo: PostgreSQL + API + web (nginx).
+#   cd 06-deploy
+#   docker compose up --build -d
+#   docker compose run --rm db-loader     # load the DB once
+# The same 3 commands on every OS - macOS, Linux, Windows (cmd, PowerShell, or
+# Git Bash) - since they're plain `docker compose`, no shell script required.
+# (`./load-db.sh` still works too, for anyone on a real shell who prefers it -
+# it does the same thing by driving `psql` from the host via `docker exec`.)
+# Web:  http://localhost:8081     API docs: http://localhost:8081/api  (proxied) / :8000/docs
+#
+# Secrets below default to the same demo values this project has always used, so
+# `docker compose up` works out of the box. To override, copy .env.example to .env
+# (already gitignored) and edit it - see that file for what each var controls.
+name: roombooking-stack
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: roombooking
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../03-database:/sql:ro           # schema.sql / roles.sql / seed.sql
+    ports: ["5433:5432"]                 # 5433 on the host to avoid a local postgres clash
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d roombooking"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+    mem_limit: 512m
+
+  api:
+    build:
+      context: ../04-backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://app_rw:${APP_RW_PASSWORD:-app_rw_pw}@db:5432/roombooking
+      # /reports/* read through the read-only role (NFR-3)
+      DATABASE_URL_READONLY: postgresql+psycopg://app_readonly:${APP_RO_PASSWORD:-app_ro_pw}@db:5432/roombooking
+      HOTEL_TIMEZONE: ${HOTEL_TIMEZONE:-Asia/Bangkok}
+      JWT_SECRET: ${JWT_SECRET:-local-demo-secret-change-me-0123456789abcdef0123}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8081}
+      ENVIRONMENT: local
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports: ["8000:8000"]      # exposed for /docs during the demo
+    healthcheck:
+      # /health is a bare liveness check (always 200, never touches the DB) - the
+      # Dockerfile bakes that one in. /health/ready actually runs `SELECT 1` through
+      # app_rw, so `docker compose ps` here means "the app can really reach the DB
+      # with a working role and schema", not just "uvicorn is up". Before this, on a
+      # brand-new volume all three containers went "healthy" before ./load-db.sh had
+      # run (schema.sql/roles.sql not applied yet), and every page 500'd even though
+      # `docker compose ps` looked fine. NOTE: `web`'s depends_on deliberately stays
+      # on `service_started`, not this - gating it on service_healthy would deadlock
+      # the documented `up -d && ./load-db.sh` (up would never return, since nothing
+      # can make this healthy before load-db.sh runs, but load-db.sh never gets to
+      # run until up returns).
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health/ready').status==200 else 1)"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 15s     # give ./load-db.sh a moment on first-ever bring-up
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: "1.0"
+
+  web:
+    build:
+      context: ../05-frontend
+      args:
+        VITE_API_BASE: /api/v1
+    depends_on:
+      api:
+        condition: service_started   # not service_healthy - see the note on api's healthcheck
+    ports: ["8081:80"]        # nginx serves the SPA and proxies /api -> api:8000
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: "0.5"
+
+  # One-shot: `docker compose run --rm db-loader` (schema + roles + seed).
+  # `profiles` keeps it out of `docker compose up` entirely - it must never run
+  # unattended (seed.sql TRUNCATEs), and it only ever runs to completion, so it
+  # has nothing to be "up" for. Identical invocation on every OS - it's a
+  # container, not a host shell script.
+  db-loader:
+    image: postgres:16-alpine
+    profiles: ["tools"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      APP_RW_PASSWORD: ${APP_RW_PASSWORD:-app_rw_pw}
+      APP_RO_PASSWORD: ${APP_RO_PASSWORD:-app_ro_pw}
+    volumes:
+      - ../03-database:/src/sql:ro
+      - ./db-loader-entrypoint.sh:/src/entrypoint.sh:ro
+    # Copy everything in with CR stripped first: a checkout / unzip / copy on Windows
+    # can carry CRLF line endings, and busybox sh then dies with "set: illegal
+    # option -". Stripping here makes the loader work on every machine, however the
+    # files got there.
+    entrypoint: ["sh", "-c", "mkdir -p /sql && for f in /src/sql/*.sql; do tr -d '\\r' < \"$$f\" > \"/sql/$${f##*/}\"; done && tr -d '\\r' < /src/entrypoint.sh > /tmp/entrypoint.sh && exec sh /tmp/entrypoint.sh"]
+
+  # One-shot: `docker compose run --rm history-loader` - adds the hotel's history
+  # 2000-01-01 .. 2026-12-31 (bookings, stays, housekeeping, repairs, payments,
+  # invoices, reviews, audit) on top of the seed; see history/00_run.sql. Run
+  # db-loader first for a clean base - the import refuses to run twice. Rows only,
+  # never structure. HISTORY_SCALE=0.3 makes a lighter data set.
+  history-loader:
+    image: postgres:16-alpine
+    profiles: ["tools"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      HISTORY_SCALE: ${HISTORY_SCALE:-1.0}
+      HISTORY_SEED: ${HISTORY_SEED:-20260923}
+    volumes:
+      - ./history:/src/history:ro
+    # same CRLF-proofing as db-loader: run a CR-stripped scratch copy
+    entrypoint: ["sh", "-c", "mkdir -p /history && for f in /src/history/*.sql; do tr -d '\\r' < \"$$f\" > \"/history/$${f##*/}\"; done && cd /history && psql -h db -U postgres -d roombooking -v ON_ERROR_STOP=1 -v scale=$$HISTORY_SCALE -v seed=$$HISTORY_SEED -f 00_run.sql"]
+
+volumes:
+  pgdata:

@@ -1,0 +1,237 @@
+/* ============================================================
+   Printable documents - tax invoice, guest folio.
+   Rendered on their own chrome-free routes (/print/*); this file
+   styles the on-screen "sheet of paper" preview and the @media
+   print rules that strip it to a clean A4 document.
+   ============================================================ */
+
+.printpage {
+  background: var(--bg-alt, #f4f1ea);
+  min-height: 100vh;
+  padding: 28px 16px 64px;
+}
+
+.printbar {
+  max-width: 820px;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.printdoc {
+  position: relative;
+  /* an explicit z-index (not just `position: relative`) is what actually makes
+     this element its own stacking context - without it, the watermark's
+     `z-index: -1` escapes upward and paints behind the whole page instead of
+     just behind this element's own content, and is fully hidden by opaque
+     backgrounds above it regardless of its opacity */
+  z-index: 0;
+  max-width: 820px;
+  margin: 0 auto;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 46px 52px 40px;
+  box-shadow: 0 12px 44px -20px rgba(0, 0, 0, 0.32);
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.printdoc__watermark {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.printdoc__watermark img {
+  width: 52%;
+  max-width: 360px;
+  opacity: 0.1;
+  /* the source mark is a light crest glowing on a solid black square (built for
+     dark surfaces, e.g. the site's own black admin sidebar) - inverting flips
+     that to a dark crest on white, so the black square disappears into the
+     page and only the crest linework reads as a faint mark */
+  filter: invert(1) grayscale(1);
+}
+
+.printdoc__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 16px;
+}
+.printdoc__ident {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #1a1a1a;
+}
+/* the crest already carries the name ("Tigger Oriental - Hotel") */
+.printdoc__crest {
+  display: block;
+  width: 196px;
+  height: auto;
+}
+.printdoc__brand {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  color: #666;
+}
+.printdoc__meta {
+  text-align: right;
+  font-size: 12px;
+  color: #333;
+}
+
+.printdoc__title {
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  margin: 22px 0 2px;
+  text-transform: uppercase;
+}
+
+.printdoc__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 28px;
+  margin: 18px 0 22px;
+}
+.printdoc__cols h4 {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: #888;
+  margin: 0 0 3px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.printtable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+}
+.printtable th {
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  border-bottom: 1px solid #999;
+  padding: 7px 6px;
+  font-weight: 400;
+}
+.printtable td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #e6e6e6;
+  vertical-align: top;
+}
+.printtable td.num,
+.printtable th.num,
+.printtotals td.num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.printtotals {
+  margin-left: auto;
+  margin-top: 14px;
+  width: 290px;
+  border-collapse: collapse;
+}
+.printtotals td {
+  padding: 4px 6px;
+}
+.printtotals tr.grand td {
+  border-top: 2px solid #1a1a1a;
+  font-weight: 700;
+  font-size: 14px;
+  padding-top: 8px;
+}
+.printtotals tr.rule td {
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+/* housekeeping daily sheet: a floor heading row + a tick box to sign off */
+.printtable tr.printtable__group td {
+  padding-top: 14px;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #555;
+  border-bottom: 1px solid #bbb;
+}
+.printcheck {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #555;
+  line-height: 15px;
+  text-align: center;
+  font-size: 12px;
+}
+.printpick {
+  margin: -6px 0 14px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  color: #444;
+}
+.printpick input {
+  font: inherit;
+  padding: 3px 6px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+.printdoc__note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: #444;
+}
+.printdoc__foot {
+  margin-top: 40px;
+  padding-top: 14px;
+  border-top: 1px solid #ccc;
+  font-size: 11px;
+  color: #888;
+  text-align: center;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .printpage {
+    background: #fff;
+    padding: 0;
+    min-height: 0;
+  }
+  .printdoc {
+    max-width: none;
+    margin: 0;
+    box-shadow: none;
+    padding: 0;
+    font-size: 12px;
+  }
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+  .printtable tr,
+  .printtotals tr {
+    break-inside: avoid;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

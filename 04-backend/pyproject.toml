@@ -1,0 +1,36 @@
+[project]
+name = "roombooking-api"
+version = "0.1.0"
+description = "Room Booking System API — 310-2209 Database Systems Mini-DB Project"
+requires-python = ">=3.12"
+readme = "README.md"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["app", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S", "C4", "PTH"]
+ignore = [
+    "S101",           # assert is fine
+    "UP046", "UP047",  # keep classic Generic[T] syntax (portable, pydantic-friendly)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S105", "S106", "S603", "S607"]  # test passwords + subprocess(psql) are intentional
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+strict = true
+warn_return_any = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore:.*HTTP_422_UNPROCESSABLE_ENTITY.*",  # starlette-internal, not ours
+]

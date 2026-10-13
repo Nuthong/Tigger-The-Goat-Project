@@ -1,0 +1,464 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2376 1222" font-family="Inter, Helvetica, Arial, sans-serif" font-size="11">
+<defs><marker id="one" markerWidth="16" markerHeight="14" refX="14" refY="7" orient="auto"><path d="M7,1 L7,13 M11,1 L11,13" stroke="#6f6146" stroke-width="1.3" fill="none"/></marker><marker id="many" markerWidth="18" markerHeight="16" refX="15" refY="8" orient="auto"><path d="M3,8 L15,2 M3,8 L15,8 M3,8 L15,14" stroke="#6f6146" stroke-width="1.2" fill="none"/></marker><marker id="zone" markerWidth="22" markerHeight="16" refX="19" refY="8" orient="auto"><circle cx="6" cy="8" r="3.2" stroke="#6f6146" stroke-width="1.2" fill="#fff"/><path d="M13,1 L13,15" stroke="#6f6146" stroke-width="1.3" fill="none"/></marker></defs>
+<rect x="0" y="0" width="2376" height="1222" fill="#ffffff"/>
+<text x="150" y="28" fill="#d6b656" font-size="11" font-weight="700" letter-spacing="1.5">PEOPLE</text>
+<text x="518" y="28" fill="#b85450" font-size="11" font-weight="700" letter-spacing="1.5">AUTH</text>
+<text x="886" y="28" fill="#82b366" font-size="11" font-weight="700" letter-spacing="1.5">CATALOG</text>
+<text x="1254" y="28" fill="#6c8ebf" font-size="11" font-weight="700" letter-spacing="1.5">BOOKING</text>
+<text x="1622" y="28" fill="#9673a6" font-size="11" font-weight="700" letter-spacing="1.5">BILLING</text>
+<text x="1990" y="28" fill="#d79b00" font-size="11" font-weight="700" letter-spacing="1.5">OPS</text>
+<rect x="150" y="150" width="236" height="196" rx="4" fill="#ffffff" stroke="#d6b656" stroke-width="1.2"/>
+<path d="M150 154 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.2"/>
+<text x="268" y="168" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">customer</text>
+<line x1="194" y1="178" x2="194" y2="346" stroke="#d6b656" stroke-width="0.8" opacity="0.5"/>
+<line x1="150" y1="178" x2="386" y2="178" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="172" y="194" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="201" y="194" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">customer_id</text><text x="379" y="194" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="150" y1="202" x2="386" y2="202" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="218" font-style="normal" font-weight="400" fill="#222">first_name</text><text x="379" y="218" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="226" x2="386" y2="226" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="242" font-style="normal" font-weight="400" fill="#222">last_name</text><text x="379" y="242" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="250" x2="386" y2="250" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="172" y="266" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="201" y="266" font-style="normal" font-weight="400" fill="#222">email</text><text x="379" y="266" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="274" x2="386" y2="274" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="290" font-style="normal" font-weight="400" fill="#222">phone</text><text x="379" y="290" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="150" y1="298" x2="386" y2="298" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="314" font-style="normal" font-weight="400" fill="#222">id_card_no</text><text x="379" y="314" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="150" y1="322" x2="386" y2="322" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="338" font-style="normal" font-weight="400" fill="#222">created_at</text><text x="379" y="338" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<rect x="150" y="392" width="236" height="220" rx="4" fill="#ffffff" stroke="#d6b656" stroke-width="1.2"/>
+<path d="M150 396 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.2"/>
+<text x="268" y="410" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">staff</text>
+<line x1="194" y1="420" x2="194" y2="612" stroke="#d6b656" stroke-width="0.8" opacity="0.5"/>
+<line x1="150" y1="420" x2="386" y2="420" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="172" y="436" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="201" y="436" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">staff_id</text><text x="379" y="436" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="150" y1="444" x2="386" y2="444" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="460" font-style="normal" font-weight="400" fill="#222">first_name</text><text x="379" y="460" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="468" x2="386" y2="468" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="484" font-style="normal" font-weight="400" fill="#222">last_name</text><text x="379" y="484" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="492" x2="386" y2="492" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="172" y="508" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="201" y="508" font-style="normal" font-weight="400" fill="#222">email</text><text x="379" y="508" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="516" x2="386" y2="516" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="532" font-style="normal" font-weight="400" fill="#222">phone</text><text x="379" y="532" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="150" y1="540" x2="386" y2="540" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="556" font-style="normal" font-weight="400" fill="#222">role</text><text x="379" y="556" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="150" y1="564" x2="386" y2="564" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="580" font-style="normal" font-weight="400" fill="#222">hired_at</text><text x="379" y="580" text-anchor="end" fill="#999" font-size="9.5">date</text>
+<line x1="150" y1="588" x2="386" y2="588" stroke="#d6b656" stroke-width="0.6" opacity="0.35"/>
+<text x="201" y="604" font-style="normal" font-weight="400" fill="#222">is_active</text><text x="379" y="604" text-anchor="end" fill="#999" font-size="9.5">boolean</text>
+<rect x="518" y="150" width="236" height="364" rx="4" fill="#ffffff" stroke="#b85450" stroke-width="1.2"/>
+<path d="M518 154 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#f8cecc" stroke="#b85450" stroke-width="1.2"/>
+<text x="636" y="168" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">app_user</text>
+<line x1="562" y1="178" x2="562" y2="514" stroke="#b85450" stroke-width="0.8" opacity="0.5"/>
+<line x1="518" y1="178" x2="754" y2="178" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="194" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="569" y="194" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">user_id</text><text x="747" y="194" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="518" y1="202" x2="754" y2="202" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="569" y="218" font-style="normal" font-weight="400" fill="#222">username</text><text x="747" y="218" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="226" x2="754" y2="226" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="242" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="569" y="242" font-style="normal" font-weight="400" fill="#222">email</text><text x="747" y="242" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="250" x2="754" y2="250" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="266" font-style="normal" font-weight="400" fill="#222">password_hash</text><text x="747" y="266" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="274" x2="754" y2="274" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="290" font-style="normal" font-weight="400" fill="#222">role</text><text x="747" y="290" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="298" x2="754" y2="298" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="314" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="569" y="314" font-style="italic" font-weight="400" fill="#222">customer_id</text><text x="747" y="314" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="518" y1="322" x2="754" y2="322" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="338" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="569" y="338" font-style="italic" font-weight="400" fill="#222">staff_id</text><text x="747" y="338" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="518" y1="346" x2="754" y2="346" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="362" font-style="normal" font-weight="400" fill="#222">is_active</text><text x="747" y="362" text-anchor="end" fill="#999" font-size="9.5">boolean</text>
+<line x1="518" y1="370" x2="754" y2="370" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="386" font-style="normal" font-weight="400" fill="#222">failed_login_count</text><text x="747" y="386" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="518" y1="394" x2="754" y2="394" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="410" font-style="normal" font-weight="400" fill="#222">locked_until</text><text x="747" y="410" text-anchor="end" fill="#999" font-size="9.5">timestamptz  ○</text>
+<line x1="518" y1="418" x2="754" y2="418" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="434" font-style="normal" font-weight="400" fill="#222">last_login_at</text><text x="747" y="434" text-anchor="end" fill="#999" font-size="9.5">timestamptz  ○</text>
+<line x1="518" y1="442" x2="754" y2="442" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="458" font-style="normal" font-weight="400" fill="#222">password_changed_at</text><text x="747" y="458" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<line x1="518" y1="466" x2="754" y2="466" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="482" font-style="normal" font-weight="400" fill="#222">token_version</text><text x="747" y="482" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="518" y1="490" x2="754" y2="490" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="506" font-style="normal" font-weight="400" fill="#222">created_at</text><text x="747" y="506" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<rect x="518" y="560" width="236" height="196" rx="4" fill="#ffffff" stroke="#b85450" stroke-width="1.2"/>
+<path d="M518 564 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#f8cecc" stroke="#b85450" stroke-width="1.2"/>
+<text x="636" y="578" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">auth_event</text>
+<line x1="562" y1="588" x2="562" y2="756" stroke="#b85450" stroke-width="0.8" opacity="0.5"/>
+<line x1="518" y1="588" x2="754" y2="588" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="604" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="569" y="604" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">event_id</text><text x="747" y="604" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="518" y1="612" x2="754" y2="612" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="628" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="569" y="628" font-style="italic" font-weight="400" fill="#222">user_id</text><text x="747" y="628" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="518" y1="636" x2="754" y2="636" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="652" font-style="normal" font-weight="400" fill="#222">username_tried</text><text x="747" y="652" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="518" y1="660" x2="754" y2="660" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="676" font-style="normal" font-weight="400" fill="#222">event_type</text><text x="747" y="676" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="684" x2="754" y2="684" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="700" font-style="normal" font-weight="400" fill="#222">ip_address</text><text x="747" y="700" text-anchor="end" fill="#999" font-size="9.5">inet  ○</text>
+<line x1="518" y1="708" x2="754" y2="708" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="724" font-style="normal" font-weight="400" fill="#222">user_agent</text><text x="747" y="724" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="518" y1="732" x2="754" y2="732" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="748" font-style="normal" font-weight="400" fill="#222">created_at</text><text x="747" y="748" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<rect x="518" y="802" width="236" height="244" rx="4" fill="#ffffff" stroke="#b85450" stroke-width="1.2"/>
+<path d="M518 806 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#f8cecc" stroke="#b85450" stroke-width="1.2"/>
+<text x="636" y="820" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">audit_log</text>
+<line x1="562" y1="830" x2="562" y2="1046" stroke="#b85450" stroke-width="0.8" opacity="0.5"/>
+<line x1="518" y1="830" x2="754" y2="830" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="846" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="569" y="846" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">audit_id</text><text x="747" y="846" text-anchor="end" fill="#999" font-size="9.5">bigint</text>
+<line x1="518" y1="854" x2="754" y2="854" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="870" font-style="normal" font-weight="400" fill="#222">at</text><text x="747" y="870" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<line x1="518" y1="878" x2="754" y2="878" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="540" y="894" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="569" y="894" font-style="italic" font-weight="400" fill="#222">actor_user_id</text><text x="747" y="894" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="518" y1="902" x2="754" y2="902" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="918" font-style="normal" font-weight="400" fill="#222">actor_label</text><text x="747" y="918" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="518" y1="926" x2="754" y2="926" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="942" font-style="normal" font-weight="400" fill="#222">action</text><text x="747" y="942" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="950" x2="754" y2="950" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="966" font-style="normal" font-weight="400" fill="#222">entity_type</text><text x="747" y="966" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="518" y1="974" x2="754" y2="974" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="990" font-style="normal" font-weight="400" fill="#222">entity_id</text><text x="747" y="990" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="518" y1="998" x2="754" y2="998" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="1014" font-style="normal" font-weight="400" fill="#222">summary</text><text x="747" y="1014" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="518" y1="1022" x2="754" y2="1022" stroke="#b85450" stroke-width="0.6" opacity="0.35"/>
+<text x="569" y="1038" font-style="normal" font-weight="400" fill="#222">data</text><text x="747" y="1038" text-anchor="end" fill="#999" font-size="9.5">jsonb  ○</text>
+<rect x="886" y="150" width="236" height="148" rx="4" fill="#ffffff" stroke="#82b366" stroke-width="1.2"/>
+<path d="M886 154 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.2"/>
+<text x="1004" y="168" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">room_type</text>
+<line x1="930" y1="178" x2="930" y2="298" stroke="#82b366" stroke-width="0.8" opacity="0.5"/>
+<line x1="886" y1="178" x2="1122" y2="178" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="194" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="937" y="194" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">room_type_id</text><text x="1115" y="194" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="202" x2="1122" y2="202" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="937" y="218" font-style="normal" font-weight="400" fill="#222">name</text><text x="1115" y="218" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="886" y1="226" x2="1122" y2="226" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="242" font-style="normal" font-weight="400" fill="#222">description</text><text x="1115" y="242" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="886" y1="250" x2="1122" y2="250" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="266" font-style="normal" font-weight="400" fill="#222">base_price_per_night</text><text x="1115" y="266" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="886" y1="274" x2="1122" y2="274" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="290" font-style="normal" font-weight="400" fill="#222">max_occupancy</text><text x="1115" y="290" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<rect x="886" y="344" width="236" height="172" rx="4" fill="#ffffff" stroke="#82b366" stroke-width="1.2"/>
+<path d="M886 348 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.2"/>
+<text x="1004" y="362" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">room</text>
+<line x1="930" y1="372" x2="930" y2="516" stroke="#82b366" stroke-width="0.8" opacity="0.5"/>
+<line x1="886" y1="372" x2="1122" y2="372" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="388" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="937" y="388" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">room_id</text><text x="1115" y="388" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="396" x2="1122" y2="396" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="412" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="937" y="412" font-style="normal" font-weight="400" fill="#222">room_number</text><text x="1115" y="412" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="886" y1="420" x2="1122" y2="420" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="436" font-style="normal" font-weight="400" fill="#222">floor</text><text x="1115" y="436" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="444" x2="1122" y2="444" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="460" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="937" y="460" font-style="italic" font-weight="400" fill="#222">room_type_id</text><text x="1115" y="460" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="468" x2="1122" y2="468" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="484" font-style="normal" font-weight="400" fill="#222">status</text><text x="1115" y="484" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="886" y1="492" x2="1122" y2="492" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="508" font-style="normal" font-weight="400" fill="#222">note</text><text x="1115" y="508" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<rect x="886" y="562" width="236" height="148" rx="4" fill="#ffffff" stroke="#82b366" stroke-width="1.2"/>
+<path d="M886 566 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.2"/>
+<text x="1004" y="580" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">service</text>
+<line x1="930" y1="590" x2="930" y2="710" stroke="#82b366" stroke-width="0.8" opacity="0.5"/>
+<line x1="886" y1="590" x2="1122" y2="590" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="606" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="937" y="606" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">service_id</text><text x="1115" y="606" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="614" x2="1122" y2="614" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="630" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="937" y="630" font-style="normal" font-weight="400" fill="#222">name</text><text x="1115" y="630" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="886" y1="638" x2="1122" y2="638" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="654" font-style="normal" font-weight="400" fill="#222">price</text><text x="1115" y="654" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="886" y1="662" x2="1122" y2="662" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="678" font-style="normal" font-weight="400" fill="#222">description</text><text x="1115" y="678" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="886" y1="686" x2="1122" y2="686" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="702" font-style="normal" font-weight="400" fill="#222">is_active</text><text x="1115" y="702" text-anchor="end" fill="#999" font-size="9.5">boolean</text>
+<rect x="886" y="756" width="236" height="292" rx="4" fill="#ffffff" stroke="#82b366" stroke-width="1.2"/>
+<path d="M886 760 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#d5e8d4" stroke="#82b366" stroke-width="1.2"/>
+<text x="1004" y="774" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">rate_plan</text>
+<line x1="930" y1="784" x2="930" y2="1048" stroke="#82b366" stroke-width="0.8" opacity="0.5"/>
+<line x1="886" y1="784" x2="1122" y2="784" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="800" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="937" y="800" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">rate_plan_id</text><text x="1115" y="800" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="808" x2="1122" y2="808" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="908" y="824" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="937" y="824" font-style="italic" font-weight="400" fill="#222">room_type_id</text><text x="1115" y="824" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="832" x2="1122" y2="832" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="848" font-style="normal" font-weight="400" fill="#222">name</text><text x="1115" y="848" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="886" y1="856" x2="1122" y2="856" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="872" font-style="normal" font-weight="400" fill="#222">kind</text><text x="1115" y="872" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="886" y1="880" x2="1122" y2="880" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="896" font-style="normal" font-weight="400" fill="#222">price_per_night</text><text x="1115" y="896" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="886" y1="904" x2="1122" y2="904" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="920" font-style="normal" font-weight="400" fill="#222">valid_from</text><text x="1115" y="920" text-anchor="end" fill="#999" font-size="9.5">date</text>
+<line x1="886" y1="928" x2="1122" y2="928" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="944" font-style="normal" font-weight="400" fill="#222">valid_to</text><text x="1115" y="944" text-anchor="end" fill="#999" font-size="9.5">date</text>
+<line x1="886" y1="952" x2="1122" y2="952" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="968" font-style="normal" font-weight="400" fill="#222">applies_weekday</text><text x="1115" y="968" text-anchor="end" fill="#999" font-size="9.5">boolean</text>
+<line x1="886" y1="976" x2="1122" y2="976" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="992" font-style="normal" font-weight="400" fill="#222">applies_weekend</text><text x="1115" y="992" text-anchor="end" fill="#999" font-size="9.5">boolean</text>
+<line x1="886" y1="1000" x2="1122" y2="1000" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="1016" font-style="normal" font-weight="400" fill="#222">priority</text><text x="1115" y="1016" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="886" y1="1024" x2="1122" y2="1024" stroke="#82b366" stroke-width="0.6" opacity="0.35"/>
+<text x="937" y="1040" font-style="normal" font-weight="400" fill="#222">is_active</text><text x="1115" y="1040" text-anchor="end" fill="#999" font-size="9.5">boolean</text>
+<rect x="1254" y="150" width="236" height="244" rx="4" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.2"/>
+<path d="M1254 154 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.2"/>
+<text x="1372" y="168" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">booking</text>
+<line x1="1298" y1="178" x2="1298" y2="394" stroke="#6c8ebf" stroke-width="0.8" opacity="0.5"/>
+<line x1="1254" y1="178" x2="1490" y2="178" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="194" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1305" y="194" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">booking_id</text><text x="1483" y="194" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="202" x2="1490" y2="202" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="218" font-style="italic" font-weight="400" fill="#222">customer_id</text><text x="1483" y="218" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="226" x2="1490" y2="226" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="242" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="242" font-style="italic" font-weight="400" fill="#222">staff_id</text><text x="1483" y="242" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="250" x2="1490" y2="250" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="266" font-style="normal" font-weight="400" fill="#222">booking_date</text><text x="1483" y="266" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<line x1="1254" y1="274" x2="1490" y2="274" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="290" font-style="normal" font-weight="400" fill="#222">check_in_date</text><text x="1483" y="290" text-anchor="end" fill="#999" font-size="9.5">date</text>
+<line x1="1254" y1="298" x2="1490" y2="298" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="314" font-style="normal" font-weight="400" fill="#222">check_out_date</text><text x="1483" y="314" text-anchor="end" fill="#999" font-size="9.5">date</text>
+<line x1="1254" y1="322" x2="1490" y2="322" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="338" font-style="normal" font-weight="400" fill="#222">num_guests</text><text x="1483" y="338" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="346" x2="1490" y2="346" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="362" font-style="normal" font-weight="400" fill="#222">status</text><text x="1483" y="362" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1254" y1="370" x2="1490" y2="370" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="386" font-style="normal" font-weight="400" fill="#222">note</text><text x="1483" y="386" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<rect x="1254" y="440" width="236" height="124" rx="4" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.2"/>
+<path d="M1254 444 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.2"/>
+<text x="1372" y="458" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">booking_room</text>
+<line x1="1298" y1="468" x2="1298" y2="564" stroke="#6c8ebf" stroke-width="0.8" opacity="0.5"/>
+<line x1="1254" y1="468" x2="1490" y2="468" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="484" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1305" y="484" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">booking_room_id</text><text x="1483" y="484" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="492" x2="1490" y2="492" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="508" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="508" font-style="italic" font-weight="400" fill="#222">booking_id</text><text x="1483" y="508" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="516" x2="1490" y2="516" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="532" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="532" font-style="italic" font-weight="400" fill="#222">room_id</text><text x="1483" y="532" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="540" x2="1490" y2="540" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="556" font-style="normal" font-weight="400" fill="#222">price_per_night</text><text x="1483" y="556" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<rect x="1254" y="610" width="236" height="148" rx="4" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.2"/>
+<path d="M1254 614 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.2"/>
+<text x="1372" y="628" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">booking_service</text>
+<line x1="1298" y1="638" x2="1298" y2="758" stroke="#6c8ebf" stroke-width="0.8" opacity="0.5"/>
+<line x1="1254" y1="638" x2="1490" y2="638" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="654" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1305" y="654" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">booking_service_id</text><text x="1483" y="654" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="662" x2="1490" y2="662" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="678" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="678" font-style="italic" font-weight="400" fill="#222">booking_id</text><text x="1483" y="678" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="686" x2="1490" y2="686" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="702" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="702" font-style="italic" font-weight="400" fill="#222">service_id</text><text x="1483" y="702" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="710" x2="1490" y2="710" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="726" font-style="normal" font-weight="400" fill="#222">quantity</text><text x="1483" y="726" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="734" x2="1490" y2="734" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="750" font-style="normal" font-weight="400" fill="#222">unit_price</text><text x="1483" y="750" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<rect x="1254" y="804" width="236" height="148" rx="4" fill="#ffffff" stroke="#6c8ebf" stroke-width="1.2"/>
+<path d="M1254 808 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.2"/>
+<text x="1372" y="822" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">review</text>
+<line x1="1298" y1="832" x2="1298" y2="952" stroke="#6c8ebf" stroke-width="0.8" opacity="0.5"/>
+<line x1="1254" y1="832" x2="1490" y2="832" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="848" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1305" y="848" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">review_id</text><text x="1483" y="848" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="856" x2="1490" y2="856" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1276" y="872" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1305" y="872" font-style="italic" font-weight="400" fill="#222">booking_id</text><text x="1483" y="872" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="880" x2="1490" y2="880" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="896" font-style="normal" font-weight="400" fill="#222">rating</text><text x="1483" y="896" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1254" y1="904" x2="1490" y2="904" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="920" font-style="normal" font-weight="400" fill="#222">comment</text><text x="1483" y="920" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="1254" y1="928" x2="1490" y2="928" stroke="#6c8ebf" stroke-width="0.6" opacity="0.35"/>
+<text x="1305" y="944" font-style="normal" font-weight="400" fill="#222">created_at</text><text x="1483" y="944" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<rect x="1622" y="150" width="236" height="196" rx="4" fill="#ffffff" stroke="#9673a6" stroke-width="1.2"/>
+<path d="M1622 154 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.2"/>
+<text x="1740" y="168" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">payment</text>
+<line x1="1666" y1="178" x2="1666" y2="346" stroke="#9673a6" stroke-width="0.8" opacity="0.5"/>
+<line x1="1622" y1="178" x2="1858" y2="178" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="194" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1673" y="194" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">payment_id</text><text x="1851" y="194" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="202" x2="1858" y2="202" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1673" y="218" font-style="italic" font-weight="400" fill="#222">booking_id</text><text x="1851" y="218" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="226" x2="1858" y2="226" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="242" font-style="normal" font-weight="400" fill="#222">amount</text><text x="1851" y="242" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="250" x2="1858" y2="250" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="266" font-style="normal" font-weight="400" fill="#222">method</text><text x="1851" y="266" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1622" y1="274" x2="1858" y2="274" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="290" font-style="normal" font-weight="400" fill="#222">status</text><text x="1851" y="290" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1622" y1="298" x2="1858" y2="298" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="314" font-style="normal" font-weight="400" fill="#222">paid_at</text><text x="1851" y="314" text-anchor="end" fill="#999" font-size="9.5">timestamptz  ○</text>
+<line x1="1622" y1="322" x2="1858" y2="322" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="338" font-style="normal" font-weight="400" fill="#222">reference_no</text><text x="1851" y="338" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<rect x="1622" y="392" width="236" height="292" rx="4" fill="#ffffff" stroke="#9673a6" stroke-width="1.2"/>
+<path d="M1622 396 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.2"/>
+<text x="1740" y="410" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">invoice</text>
+<line x1="1666" y1="420" x2="1666" y2="684" stroke="#9673a6" stroke-width="0.8" opacity="0.5"/>
+<line x1="1622" y1="420" x2="1858" y2="420" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="436" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1673" y="436" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">invoice_id</text><text x="1851" y="436" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="444" x2="1858" y2="444" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="460" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1673" y="460" font-style="italic" font-weight="400" fill="#222">booking_id</text><text x="1851" y="460" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="468" x2="1858" y2="468" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="484" text-anchor="middle" font-size="8" font-weight="700" fill="#666">UK</text>
+<text x="1673" y="484" font-style="normal" font-weight="400" fill="#222">invoice_no</text><text x="1851" y="484" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1622" y1="492" x2="1858" y2="492" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="508" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1673" y="508" font-style="italic" font-weight="400" fill="#222">issued_by</text><text x="1851" y="508" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="1622" y1="516" x2="1858" y2="516" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="532" font-style="normal" font-weight="400" fill="#222">issued_at</text><text x="1851" y="532" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<line x1="1622" y1="540" x2="1858" y2="540" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="556" font-style="normal" font-weight="400" fill="#222">status</text><text x="1851" y="556" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1622" y1="564" x2="1858" y2="564" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="580" font-style="normal" font-weight="400" fill="#222">tax_rate</text><text x="1851" y="580" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="588" x2="1858" y2="588" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="604" font-style="normal" font-weight="400" fill="#222">subtotal</text><text x="1851" y="604" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="612" x2="1858" y2="612" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="628" font-style="normal" font-weight="400" fill="#222">tax_amount</text><text x="1851" y="628" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="636" x2="1858" y2="636" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="652" font-style="normal" font-weight="400" fill="#222">total</text><text x="1851" y="652" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="660" x2="1858" y2="660" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="676" font-style="normal" font-weight="400" fill="#222">note</text><text x="1851" y="676" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<rect x="1622" y="730" width="236" height="220" rx="4" fill="#ffffff" stroke="#9673a6" stroke-width="1.2"/>
+<path d="M1622 734 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.2"/>
+<text x="1740" y="748" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">invoice_line</text>
+<line x1="1666" y1="758" x2="1666" y2="950" stroke="#9673a6" stroke-width="0.8" opacity="0.5"/>
+<line x1="1622" y1="758" x2="1858" y2="758" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="774" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="1673" y="774" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">invoice_line_id</text><text x="1851" y="774" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="782" x2="1858" y2="782" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1644" y="798" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="1673" y="798" font-style="italic" font-weight="400" fill="#222">invoice_id</text><text x="1851" y="798" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="806" x2="1858" y2="806" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="822" font-style="normal" font-weight="400" fill="#222">line_no</text><text x="1851" y="822" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1622" y1="830" x2="1858" y2="830" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="846" font-style="normal" font-weight="400" fill="#222">line_type</text><text x="1851" y="846" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1622" y1="854" x2="1858" y2="854" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="870" font-style="normal" font-weight="400" fill="#222">description</text><text x="1851" y="870" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1622" y1="878" x2="1858" y2="878" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="894" font-style="normal" font-weight="400" fill="#222">quantity</text><text x="1851" y="894" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="902" x2="1858" y2="902" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="918" font-style="normal" font-weight="400" fill="#222">unit_price</text><text x="1851" y="918" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<line x1="1622" y1="926" x2="1858" y2="926" stroke="#9673a6" stroke-width="0.6" opacity="0.35"/>
+<text x="1673" y="942" font-style="normal" font-weight="400" fill="#222">amount</text><text x="1851" y="942" text-anchor="end" fill="#999" font-size="9.5">numeric</text>
+<rect x="1990" y="150" width="236" height="172" rx="4" fill="#ffffff" stroke="#d79b00" stroke-width="1.2"/>
+<path d="M1990 154 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.2"/>
+<text x="2108" y="168" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">room_status_log</text>
+<line x1="2034" y1="178" x2="2034" y2="322" stroke="#d79b00" stroke-width="0.8" opacity="0.5"/>
+<line x1="1990" y1="178" x2="2226" y2="178" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="194" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="2041" y="194" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">log_id</text><text x="2219" y="194" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="202" x2="2226" y2="202" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="218" font-style="italic" font-weight="400" fill="#222">room_id</text><text x="2219" y="218" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="226" x2="2226" y2="226" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="242" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="242" font-style="italic" font-weight="400" fill="#222">changed_by</text><text x="2219" y="242" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="250" x2="2226" y2="250" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="266" font-style="normal" font-weight="400" fill="#222">old_status</text><text x="2219" y="266" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="274" x2="2226" y2="274" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="290" font-style="normal" font-weight="400" fill="#222">new_status</text><text x="2219" y="290" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="298" x2="2226" y2="298" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="314" font-style="normal" font-weight="400" fill="#222">changed_at</text><text x="2219" y="314" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<rect x="1990" y="368" width="236" height="292" rx="4" fill="#ffffff" stroke="#d79b00" stroke-width="1.2"/>
+<path d="M1990 372 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.2"/>
+<text x="2108" y="386" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">housekeeping_task</text>
+<line x1="2034" y1="396" x2="2034" y2="660" stroke="#d79b00" stroke-width="0.8" opacity="0.5"/>
+<line x1="1990" y1="396" x2="2226" y2="396" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="412" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="2041" y="412" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">task_id</text><text x="2219" y="412" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="420" x2="2226" y2="420" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="436" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="436" font-style="italic" font-weight="400" fill="#222">room_id</text><text x="2219" y="436" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="444" x2="2226" y2="444" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="460" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="460" font-style="italic" font-weight="400" fill="#222">booking_id</text><text x="2219" y="460" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="1990" y1="468" x2="2226" y2="468" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="484" font-style="normal" font-weight="400" fill="#222">task_type</text><text x="2219" y="484" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="492" x2="2226" y2="492" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="508" font-style="normal" font-weight="400" fill="#222">status</text><text x="2219" y="508" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="516" x2="2226" y2="516" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="532" font-style="normal" font-weight="400" fill="#222">scheduled_for</text><text x="2219" y="532" text-anchor="end" fill="#999" font-size="9.5">date</text>
+<line x1="1990" y1="540" x2="2226" y2="540" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="556" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="556" font-style="italic" font-weight="400" fill="#222">assigned_to</text><text x="2219" y="556" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="1990" y1="564" x2="2226" y2="564" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="580" font-style="normal" font-weight="400" fill="#222">created_at</text><text x="2219" y="580" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<line x1="1990" y1="588" x2="2226" y2="588" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="604" font-style="normal" font-weight="400" fill="#222">started_at</text><text x="2219" y="604" text-anchor="end" fill="#999" font-size="9.5">timestamptz  ○</text>
+<line x1="1990" y1="612" x2="2226" y2="612" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="628" font-style="normal" font-weight="400" fill="#222">completed_at</text><text x="2219" y="628" text-anchor="end" fill="#999" font-size="9.5">timestamptz  ○</text>
+<line x1="1990" y1="636" x2="2226" y2="636" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="652" font-style="normal" font-weight="400" fill="#222">note</text><text x="2219" y="652" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<rect x="1990" y="706" width="236" height="316" rx="4" fill="#ffffff" stroke="#d79b00" stroke-width="1.2"/>
+<path d="M1990 710 q0 -4 4 -4 h228 q4 0 4 4 v24 h-236 z" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.2"/>
+<text x="2108" y="724" text-anchor="middle" font-weight="700" font-size="12" fill="#1a1a1a">maintenance_ticket</text>
+<line x1="2034" y1="734" x2="2034" y2="1022" stroke="#d79b00" stroke-width="0.8" opacity="0.5"/>
+<line x1="1990" y1="734" x2="2226" y2="734" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="750" text-anchor="middle" font-size="8" font-weight="700" fill="#666">PK</text>
+<text x="2041" y="750" font-style="normal" font-weight="700" text-decoration="underline" fill="#222">ticket_id</text><text x="2219" y="750" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="758" x2="2226" y2="758" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="774" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="774" font-style="italic" font-weight="400" fill="#222">room_id</text><text x="2219" y="774" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="1990" y1="782" x2="2226" y2="782" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="798" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="798" font-style="italic" font-weight="400" fill="#222">reported_by</text><text x="2219" y="798" text-anchor="end" fill="#999" font-size="9.5">int</text>
+<line x1="1990" y1="806" x2="2226" y2="806" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2012" y="822" text-anchor="middle" font-size="8" font-weight="700" fill="#666">FK</text>
+<text x="2041" y="822" font-style="italic" font-weight="400" fill="#222">assigned_to</text><text x="2219" y="822" text-anchor="end" fill="#999" font-size="9.5">int  ○</text>
+<line x1="1990" y1="830" x2="2226" y2="830" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="846" font-style="normal" font-weight="400" fill="#222">category</text><text x="2219" y="846" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="854" x2="2226" y2="854" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="870" font-style="normal" font-weight="400" fill="#222">priority</text><text x="2219" y="870" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="878" x2="2226" y2="878" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="894" font-style="normal" font-weight="400" fill="#222">status</text><text x="2219" y="894" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="902" x2="2226" y2="902" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="918" font-style="normal" font-weight="400" fill="#222">title</text><text x="2219" y="918" text-anchor="end" fill="#999" font-size="9.5">varchar</text>
+<line x1="1990" y1="926" x2="2226" y2="926" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="942" font-style="normal" font-weight="400" fill="#222">description</text><text x="2219" y="942" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<line x1="1990" y1="950" x2="2226" y2="950" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="966" font-style="normal" font-weight="400" fill="#222">created_at</text><text x="2219" y="966" text-anchor="end" fill="#999" font-size="9.5">timestamptz</text>
+<line x1="1990" y1="974" x2="2226" y2="974" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="990" font-style="normal" font-weight="400" fill="#222">resolved_at</text><text x="2219" y="990" text-anchor="end" fill="#999" font-size="9.5">timestamptz  ○</text>
+<line x1="1990" y1="998" x2="2226" y2="998" stroke="#d79b00" stroke-width="0.6" opacity="0.35"/>
+<text x="2041" y="1014" font-style="normal" font-weight="400" fill="#222">resolution</text><text x="2219" y="1014" text-anchor="end" fill="#999" font-size="9.5">varchar  ○</text>
+<path d="M 754 190 L 766 190 L 766 890 L 754 890" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 754 190 L 775 190 L 775 624 L 754 624" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1490 190 L 1520 190 L 1520 504 L 1490 504" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1490 190 L 1529 190 L 1529 674 L 1490 674" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1490 190 L 1538 190 L 1538 40 L 1906 40 L 1906 456 L 1990 456" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1490 190 L 1547 190 L 1547 456 L 1622 456" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1490 190 L 1556 190 L 1556 214 L 1622 214" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1490 190 L 1565 190 L 1565 868 L 1490 868" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#zone)"/>
+<path d="M 386 190 L 470 190 L 470 310 L 518 310" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#zone)"/>
+<path d="M 386 190 L 479 190 L 479 47 L 1215 47 L 1215 214 L 1254 214" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1858 432 L 1960 432 L 1960 794 L 1858 794" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 384 L 1233 384 L 1233 528 L 1254 528" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 384 L 1134 384 L 1134 54 L 1870 54 L 1870 432 L 1990 432" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 384 L 1143 384 L 1143 61 L 1879 61 L 1879 770 L 1990 770" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 384 L 1152 384 L 1152 68 L 1888 68 L 1888 214 L 1990 214" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 190 L 1161 190 L 1161 820 L 1122 820" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 190 L 1170 190 L 1170 456 L 1122 456" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 1122 602 L 1179 602 L 1179 698 L 1254 698" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 386 432 L 452 432 L 452 334 L 518 334" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#zone)"/>
+<path d="M 386 432 L 461 432 L 461 75 L 1197 75 L 1197 238 L 1254 238" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 386 432 L 470 432 L 470 82 L 1942 82 L 1942 552 L 1990 552" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 386 432 L 479 432 L 479 89 L 1583 89 L 1583 504 L 1622 504" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 386 432 L 488 432 L 488 96 L 1960 96 L 1960 818 L 1990 818" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 386 432 L 497 432 L 497 103 L 1969 103 L 1969 794 L 1990 794" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<path d="M 386 432 L 398 432 L 398 110 L 1870 110 L 1870 238 L 1990 238" fill="none" stroke="#7c6f52" stroke-width="1" stroke-linejoin="round" opacity="0.78" marker-start="url(#one)" marker-end="url(#many)"/>
+<text x="150" y="1210" fill="#aaa" font-size="9">generated from 03-database/schema.sql by build_erd.py — 19 tables · 25 relationships · ○ = nullable · underline = PK · italic = FK</text>
+</svg>

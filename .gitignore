@@ -1,0 +1,22 @@
+# dependencies / build output
+node_modules/
+dist/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# local secrets (keep the .env.example files)
+.env
+.env.*
+!.env.example
+
+# editor / OS / tooling
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*

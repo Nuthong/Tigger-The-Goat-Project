@@ -1,0 +1,14 @@
+node_modules
+dist
+.vite
+.env
+.env.*
+!.env.example
+.git
+*.md
+design
+
+# macOS AppleDouble sidecars - unreadable xattrs break the build context
+._*
+**/._*
+.DS_Store
