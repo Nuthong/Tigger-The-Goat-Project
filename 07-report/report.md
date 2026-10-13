@@ -2,7 +2,7 @@
 
 **วิชา:** 310-2209 Database Systems — Mini-DB Group Project (30%)
 **กลุ่ม:** 6810301002 · 6810301003 · 6810301004 · 6810301012 · 6810301037 · 6810301039
-**Repository:** `310-2209 Database Systems/Mini-DB-Project/`
+**Repository:** https://github.com/Nuthong/Tigger-The-Goat
 **สถานะเอกสาร:** Draft 2 (ปรับปรุงจากฉบับ Draft 1 วันที่ 9 ก.ย. — ดู §0)
 
 ---
