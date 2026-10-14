@@ -1,6 +1,6 @@
 # Mini-DB Group Project - ระบบจองห้องพัก (Room Booking System)
 
-**310-2209 Database Systems** · Mini-DB Group Project (30%)
+**310-2209 Database Systems** · Mini-DB Group Project
 Group: 6810301002 · 003 · 004 · 012 · 037 · 039
 
 A relational database for a hotel room-booking system, proven end-to-end with a
