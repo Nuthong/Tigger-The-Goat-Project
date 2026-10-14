@@ -174,7 +174,7 @@ erDiagram
   - `token_version` +1 เมื่อ logout-all / เปลี่ยนรหัส → JWT ที่ออกก่อนหน้าใช้ไม่ได้
   - UNIQUE(username); UNIQUE(email); role ∈ {customer, receptionist, housekeeping, accounting, manager, admin}
   - CHECK `chk_user_identity`: role = customer ⇒ มี customer_id (staff_id เป็น NULL) / role ≠ customer ⇒ มี staff_id (customer_id เป็น NULL)
-  - password_hash = bcrypt เท่านั้น — ไม่มี plaintext (ดู `../SECURITY.md`)
+  - password_hash = bcrypt เท่านั้น — ไม่มี plaintext (ดู `../../SECURITY.md`)
 - **auth_event**(<u>event_id</u>, *user_id*, username_tried, event_type, ip_address, user_agent, created_at)
   - event_type ∈ {login_success, login_fail, logout, locked, password_change}
   - user_id เป็น NULL ได้ (กรณี login ผิด username จนยังไม่รู้ตัวตน) — ON DELETE SET NULL
@@ -276,5 +276,5 @@ erDiagram
 ## 5. Security / Auth layer
 
 ตาราง `app_user` + `auth_event` เป็นฐานของระบบล็อกอิน + audit — รายละเอียดมาตรการทั้งหมด
-(hash, JWT, rate-limit, lockout, RBAC, least-privilege DB role) อยู่ใน [`../SECURITY.md`](../SECURITY.md)
-และ DB role อยู่ใน [`../03-database/roles.sql`](../03-database/roles.sql)
+(hash, JWT, rate-limit, lockout, RBAC, least-privilege DB role) อยู่ใน [`../../SECURITY.md`](../../SECURITY.md)
+และ DB role อยู่ใน [`../../03-database/roles.sql`](../../03-database/roles.sql)

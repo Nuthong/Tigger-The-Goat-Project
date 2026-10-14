@@ -40,7 +40,7 @@ psql -d roombooking -f seed.sql
 
 ## จุดที่ใช้โชว์ตอนนำเสนอ
 
-- **3NF** — ไม่มีคอลัมน์ยอดรวม/CSV, ราคาใช้ snapshot ที่ตั้งใจ (ดู `../02-design/relational-schema.md`)
+- **3NF** — ไม่มีคอลัมน์ยอดรวม/CSV, ราคาใช้ snapshot ที่ตั้งใจ (ดู `../02-design/Draft/relational-schema.md`)
 - **Referential integrity** — FK RESTRICT กับ master, CASCADE กับรายการย่อยของ booking
 - **Trigger `bi_booking_room_no_overlap` + `bu_booking_no_overlap`** — กันจองห้องซ้อนช่วงวัน (BR-5)
   ทั้งตอนเพิ่มห้องให้การจอง และตอนแก้วันที่หรือสถานะในตาราง `booking` ใช้ `pg_advisory_xact_lock`

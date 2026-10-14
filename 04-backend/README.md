@@ -59,7 +59,7 @@ make test          # pytest  (builds roombooking_test from ../03-database/*.sql)
 make audit         # pip-audit
 ```
 
-Current status: **ruff clean · mypy strict clean · 107/107 tests pass · pip-audit clean**.
+Current status: **ruff clean · mypy strict clean · 198/198 tests pass · pip-audit clean**.
 
 The suite covers all functional modules:
 

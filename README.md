@@ -15,7 +15,7 @@ FastAPI service and a React web client.
 | [`04-backend/`](04-backend/README.md) | FastAPI + SQLAlchemy 2 async · ~77 endpoints, every list endpoint paginated · 198 tests · business rules enforced in `schemas/` + `services/` |
 | [`05-frontend/`](05-frontend/README.md) | React 18 + Vite + TS · **fully bilingual site, guest and staff (English / ไทย)** - guest site (Mandarin-Oriental-style, photography) + staff portal `/admin` (20 screens incl. Reports, TapeChart, In-house guests, Add-on services, Sign-in activity; printable tax invoice / folio / housekeeping daily sheet) · per-role route guards · guest ratings, reviews, self-serve cancel + reschedule + no-show · client guardrails mirror the API rules · 81 vitest tests · `design/ui-ux.md` |
 | [`06-deploy/`](06-deploy/DEPLOY.md) | `docker-compose.yml` (db+api+web+`db-loader`+`history-loader`) · deploy runbook · [`history/`](06-deploy/history/README.md) - 27 years of consistent hotel history 2000-2026 (bookings, stays, housekeeping, repairs, payments, invoices, reviews, audit), 20 consistency checks before commit |
-| [`07-report/`](07-report/report.md) | Final Report · presentation · `slides.html` · demo script |
+| [`07-report/`](07-report/TG_roomBooking_report_6810301003.pdf) | Final Report (`TG_roomBooking_report_6810301003.pdf`) · presentation (`TG_roomBooking_6810301003.pdf`) · `slides.html` · demo script |
 
 ## Quick start
 
