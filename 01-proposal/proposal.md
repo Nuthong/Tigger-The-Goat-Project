@@ -94,7 +94,7 @@ Frontend มี navigation แยกตาม role และ `ProtectedRoute` (`
 
 ### กลุ่ม Billing
 14. **payment** — การชำระเงินของการจอง (จ่ายได้หลายงวด): จำนวนเงิน, method (cash/credit_card/bank_transfer/promptpay), สถานะ (pending/paid/refunded/failed), เวลาที่จ่าย
-15. **invoice** — ใบแจ้งหนี้: `UNIQUE(booking_id)` (หนึ่งการจอง ≤ 1 ใบ), invoice_no (unique), issued_by, สถานะ (draft/issued/paid/void), tax_rate (VAT 7%), subtotal / tax_amount / total (แช่แข็ง ณ วันที่ออก)
+15. **invoice** — ใบแจ้งหนี้: partial unique index `uq_invoice_active_booking` (หนึ่งการจองมีใบที่ไม่ void ได้ ≤ 1 ใบ), invoice_no (unique), issued_by, สถานะ (draft/issued/paid/void), tax_rate (VAT 7%), subtotal / tax_amount / total (แช่แข็ง ณ วันที่ออก)
 16. **invoice_line** — บรรทัดในใบแจ้งหนี้: line_no, line_type (room/service/discount — ส่วนลดใช้ unit_price ติดลบ), จำนวน, ราคา, ยอด
 
 ### กลุ่ม Operations
@@ -102,7 +102,7 @@ Frontend มี navigation แยกตาม role และ `ProtectedRoute` (`
 18. **housekeeping_task** — งานแม่บ้าน: ห้อง, booking (ถ้ามี), task_type (checkout_clean/stayover_clean/deep_clean/turndown/inspection), สถานะ (pending/in_progress/done/skipped), วันที่กำหนด, ผู้รับผิดชอบ, เวลาเริ่ม/เสร็จ
 19. **maintenance_ticket** — งานแจ้งซ่อม: ห้อง (NULL = พื้นที่ส่วนกลาง), ผู้แจ้ง, ผู้รับงาน, หมวด (plumbing/electrical/hvac/furniture/appliance/other), ความเร่งด่วน (low/normal/high/urgent), สถานะ (open/in_progress/resolved/closed/cancelled), หัวข้อ, รายละเอียด, วิธีแก้
 
-*ส่วน views (7) / functions (3) / triggers (3) / indexes (18) / roles (2) ดู §6*
+*ส่วน views (7) / functions (3) / triggers (6) / indexes (28) / roles (2) ดู §6*
 
 ## 5. กฎทางธุรกิจ (Business Rules)
 
@@ -127,7 +127,7 @@ Frontend มี navigation แยกตาม role และ `ProtectedRoute` (`
 ### ยอดเงิน & ใบแจ้งหนี้
 - **BR-13** ยอดที่ต้องชำระของการจอง = Σ(ราคา/คืน × จำนวนคืน ของทุกห้อง) + Σ(ราคาบริการเสริม × จำนวน) − Σ(เงินที่จ่ายแล้ว) — คำนวณสดผ่าน view `v_booking_bill` (ไม่เก็บ `total_amount` ซ้ำ)
 - **BR-14** จ่ายเงินได้ **หลายงวด** (มัดจำ + ส่วนที่เหลือ); เฉพาะ `payment.status = 'paid'` เท่านั้นที่นับเป็นยอดชำระแล้ว
-- **BR-15** หนึ่งการจองออกใบแจ้งหนี้ได้ **ไม่เกิน 1 ใบ** (`UNIQUE(booking_id)`); `invoice_no` ต้องไม่ซ้ำ
+- **BR-15** หนึ่งการจองมีใบแจ้งหนี้ที่ใช้งานอยู่ได้ **ไม่เกิน 1 ใบ** (partial unique index `uq_invoice_active_booking` เฉพาะใบที่ไม่ void; void แล้วออกใบใหม่ได้); `invoice_no` ต้องไม่ซ้ำ
 - **BR-16** ยอด `subtotal / tax_amount / total` บนใบแจ้งหนี้ **แช่แข็ง ณ วันที่ออก** (แก้ย้อนหลังไม่ได้ตามหลักบัญชี); `invoice` แยกจาก `payment` โดยเจตนา — invoice = ยอดที่ **เรียกเก็บ**, payment = เงินที่ **รับมา**
 
 ### รีวิว
@@ -149,8 +149,8 @@ Frontend มี navigation แยกตาม role และ `ProtectedRoute` (`
 | Not Null | อีเมล, ชื่อห้อง/ประเภทห้อง, วัน check-in/out, `payment.amount`, `password_hash`, ฟิลด์คีย์ทั้งหมด |
 | Views (7) | `v_booking_bill`, `v_current_guests`, `v_room_type_revenue`, `v_housekeeping_board`, `v_maintenance_open`, `v_daily_revenue`, `v_invoice_summary` |
 | Functions (3) | `fn_available_rooms(date,date)`, `fn_quote_room(int,date)`, `fn_quote_stay(int,date,date)` |
-| Triggers (3) | `bi_booking_room_no_overlap` (BR-5), `au_booking_checkout_housekeeping` (BR-9), `aiu_booking_audit` (BR-20) |
-| Indexes (18) | บน FK และคอลัมน์ที่ query บ่อย (booking dates/status, availability, audit time/entity ฯลฯ) |
+| Triggers (6) | `bi_booking_room_no_overlap` (BR-5), `bu_booking_no_overlap` (BR-5), `au_booking_checkout_housekeeping` (BR-9), `aiu_booking_audit` (BR-20), `aiu_app_user_role_sync` + `au_staff_role_sync` (ให้ `staff.role` ตรงกับ `app_user.role`) |
+| Indexes (28) | บน FK และคอลัมน์ที่ query บ่อย (booking dates/status, availability, audit time/entity ฯลฯ) |
 | Security | password = bcrypt (`pgcrypto`), แอปต่อ DB ด้วย role least-privilege `app_rw` (อ่านอย่างเดียว = `app_readonly`), audit ผ่าน `auth_event` + `audit_log` — ดู `../SECURITY.md` และ `../03-database/roles.sql` |
 
 ## 7. ผลลัพธ์ที่จะส่ง (Deliverables)

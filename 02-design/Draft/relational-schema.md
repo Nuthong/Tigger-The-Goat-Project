@@ -25,7 +25,7 @@ erDiagram
     APP_USER    ||--o{ AUTH_EVENT      : "บันทึกเหตุการณ์"
     APP_USER    ||--o{ AUDIT_LOG        : "ทำรายการ"
     ROOM_TYPE   ||--o{ RATE_PLAN        : "ตั้งราคาตามช่วง"
-    BOOKING     ||--o| INVOICE          : "ออกใบแจ้งหนี้"
+    BOOKING     ||--o{ INVOICE          : "ออกใบแจ้งหนี้"
     INVOICE     ||--o{ INVOICE_LINE     : "แยกบรรทัด"
     ROOM        ||--o{ HOUSEKEEPING_TASK: "ต้องทำความสะอาด"
     BOOKING     ||--o{ HOUSEKEEPING_TASK: "หลังเช็คเอาท์"
@@ -185,7 +185,7 @@ erDiagram
   - kind ∈ {seasonal, weekend, weekday, promotion}; CHECK(valid_to ≥ valid_from); CHECK(applies_weekday OR applies_weekend)
   - ราคาที่เรียกเก็บจริงมาจาก `fn_quote_room()` — เลือกแผน active ที่ครอบวันนั้นและตรงวันธรรมดา/วันหยุด โดยใช้ `priority` สูงสุด; ถ้าไม่มี → `room_type.base_price_per_night`
 - **invoice**(<u>invoice_id</u>, *booking_id*, invoice_no, *issued_by*, issued_at, status, tax_rate, subtotal, tax_amount, total, note)
-  - UNIQUE(booking_id) → หนึ่งการจอง = ไม่เกินหนึ่งใบ; UNIQUE(invoice_no); status ∈ {draft, issued, paid, void}
+  - partial UNIQUE(booking_id) WHERE status ≠ void (`uq_invoice_active_booking`) → หนึ่งการจองมีใบที่ใช้งานอยู่ได้ไม่เกินหนึ่งใบ; UNIQUE(invoice_no); status ∈ {draft, issued, paid, void}
   - แยกจาก `payment` โดยตั้งใจ: invoice = ยอดที่ **เรียกเก็บ**, payment = เงินที่ **รับมา** (จ่ายกี่งวดก็ได้)
 - **invoice_line**(<u>invoice_line_id</u>, *invoice_id*, line_no, line_type, description, quantity, unit_price, amount)
   - UNIQUE(invoice_id, line_no); line_type ∈ {room, service, discount} (ส่วนลดใช้ unit_price ติดลบ)

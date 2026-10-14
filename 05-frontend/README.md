@@ -1,13 +1,12 @@
-# Aria — Room Booking web client
+# Tigger Oriental — Room Booking web client
 
 React 18 + Vite + TypeScript SPA for the `04-backend` API.
-Design language: apple.com-inspired — see [`design/ui-ux.md`](design/ui-ux.md).
+Design: an editorial, Mandarin-Oriental-inspired guest site (serif display, warm off-white, gold accent)
++ a dense staff portal. The original pre-build spec is [`design/ui-ux.md`](design/ui-ux.md).
 
 **Verified:** `tsc --noEmit && vite build` passes and the app runs — the full stack
-(`06-deploy/docker-compose.yml`) was brought up on `http://localhost:8080` and
+(`06-deploy/docker-compose.yml`) was brought up on `http://localhost:8081` and
 login / search / bookings / dashboard were exercised against the live API.
-(No Node on the build host, so `npm` steps below run inside the Docker image; run
-them directly once Node is installed.)
 
 ## Run (dev)
 
@@ -31,14 +30,14 @@ Then sign in with a seed account (password `Passw0rd!2026`): `manager01`, `recep
 ```bash
 npm run typecheck     # tsc --noEmit, strict
 npm run lint          # eslint (flat config)
-npm test              # vitest — unit tests for lib/ helpers (format, validation)
+npm test              # vitest — 81 unit tests for lib/ helpers (format, validation, filters, csv, …)
 npm run build         # tsc -b && vite build  -> dist/
 ```
 
 ## Deploy
 
 - **Vercel / Netlify:** build command `npm run build`, output `dist`, set `VITE_API_BASE` to the API origin (e.g. `https://<api>.onrender.com/api/v1`). The API's `CORS_ORIGINS` must then include the site origin.
-- **Docker (with the API behind nginx):** `docker build -t aria-web .` → serves `dist` on :80 and proxies `/api` to the `api` service (see `nginx.conf`).
+- **Docker (with the API behind nginx):** `docker build -t roombooking-web .` → serves `dist` on :80 and proxies `/api` to the `api` service (see `nginx.conf`).
 
 ## Structure
 
@@ -81,35 +80,48 @@ src/
 │   │                         drive `?rt=<id>` to focus one room type
 │   ├── ConfirmReservation    /book/confirm — two-column review: stay summary (rooms + adults +
 │   │                         children) + itemised booking-details card + agree-to-terms, then books
+│   ├── Payment               /book/pay/:bookingId — guest pays the balance online while the room
+│   │                         is held (live "held for MM:SS" countdown)
 │   ├── Bookings              filterable list, ownership-scoped by the API
-│   ├── BookingDetail         bill + contextual actions (check-in/out, cancel, pay); the
+│   ├── BookingDetail         bill + contextual actions (check-in/out, cancel, pay, reschedule); the
 │   │                         review form is shown once, then the submitted review read-only
 │   └── NotFound
+├── print/                    printable documents (save as PDF): tax invoice, guest folio,
+│                             housekeeping daily sheet (`v_housekeeping_board`)
+├── i18n/I18n.tsx             English / ไทย switch for the whole site (guest + staff)
 └── admin/                    staff portal (/admin) — AdminLayout shell + role-gated routes
     ├── Overview              manager: revenue donut + occupancy table
     ├── TapeChart             reservation tape (rooms × days): month/year band, "Mon."-style day
     │                         labels, from/to date range, Fit/S/M/L column width (Fit auto-sizes to
     │                         the window), live 24h clock, per-user view saved to localStorage
     ├── BookingsAdmin · NewBooking   front desk: list + create (capacity / past-date guards)
+    ├── InHouse               front desk: every occupied room right now (`v_current_guests`)
     ├── RoomsAdmin            room status board (confirm before maintenance / closed)
-    ├── GuestsAdmin           customer directory (search + paginated — 1000 seed guests)
+    ├── GuestsAdmin · GuestDetail   customer directory (search + paginated — 1000 seed guests)
+    │                         + one guest's profile, ID record and stays
     ├── Housekeeping · Maintenance   cleaning board + engineering tickets
     ├── Reviews               guest-feedback board: score, distribution, filter by stars
-    ├── RatePlans             rate-plan CRUD + price checker (range / priority validation)
-    ├── Invoices              accounting: ledger + invoice viewer / void
+    ├── RatePlans · RateCalendar   rate-plan CRUD + price checker; month grid of the effective
+    │                         nightly rate (`fn_quote_room`)
+    ├── Services              add-on catalog: price, retire (never delete), units sold
+    ├── Reports               manager: revenue mix, occupancy + yield, forward book, CSV export
+    ├── Invoices · DailyRevenue   accounting: ledger + invoice viewer / void; room revenue
+    │                         night by night (`v_daily_revenue`)
     ├── Users                 admin: staff role change; customer accounts are role-locked —
     │                         disable or delete only; never yourself
+    ├── SecurityLog           admin: sign-in activity (`auth_event`)
     └── Audit                 manager: audit trail
 ```
 
 ## Assets
 
 - `public/hero-1.mp4` … `public/hero-5.mp4` — the full-bleed landing hero **montage**: five
-  short cinematic **city** clips cut together, each held ~3 s with a gentle crossfade, looping
+  short Bangkok clips cut together, each held ~3 s with a gentle crossfade, looping
   (`src/components/HeroMontage.tsx`, list in `HERO_CLIPS` in `src/lib/images.ts`). All served
-  from the app's own origin — CSP allows `media-src 'self'`. Clips are **Coverr, CC0**
-  (the city from above at night · the interchange · lights & traffic · a street corner · the city at dusk),
-  credited in the site footer. 720p H.264, ~3–5 MB each.
+  from the app's own origin — CSP allows `media-src 'self'`. Wat Arun from the river
+  (Wikimedia Commons, **CC BY-SA 4.0**, credited in the site footer) + four **Mixkit** clips
+  (skyline at dusk, night lights, wok stir-fry, silk) — sources and licences in
+  [`HERO-VIDEOS.md`](HERO-VIDEOS.md). 720p H.264, ~3–5 MB each.
   The montage has a still poster (`HERO` in `src/lib/images.ts`) and degrades to that image if
   `prefers-reduced-motion` is set; a clip that fails to load is skipped on the next cut.
   **Swap in the property's own footage** — replace the files (keep the `hero-N.mp4` names) or
@@ -119,8 +131,9 @@ src/
 
 ## Notes
 
-- Only **staff** can create bookings / take payments / move status (matches the API + proposal).
-  Guests search, view their own trips, and review after check-out.
+- **Guests** book for themselves, pay online, reschedule or cancel their own stays, and review
+  after check-out. **Staff** book for any guest, take payments at the desk, check in / out and
+  move room status.
 - `ProtectedRoute` guards `/bookings*` (any auth) and every `/admin/*` route by the role that
   `AdminLayout` shows the link to (front desk / housekeeping / accounting / manager / admin), so a
   deep link can't skip the nav.

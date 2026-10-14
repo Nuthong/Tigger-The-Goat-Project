@@ -28,7 +28,7 @@ Sign in: `manager01` / `Passw0rd!2026` (or `recep01`, `somchai` — username, em
 Ports on the host: web `8081`, API `8000`, Postgres `5433` (→ container 5432).
 Tear down: `docker compose down -v`.
 
-(`./load-db.sh` still works on macOS/Linux/Git-Bash if you prefer a real shell -
+(`bash load-db.sh` still works on macOS/Linux/Git-Bash if you prefer a real shell -
 it drives the same `schema.sql` / `roles.sql` / `seed.sql` from the host via
 `docker exec`. `db-loader` does the identical thing from inside a container, so
 it needs nothing installed on the host and no shell at all.)
@@ -62,6 +62,7 @@ site 500s, resetting data): [`HOWTO.md`](HOWTO.md).
   | key | value |
   |---|---|
   | `DATABASE_URL` | the Neon `postgresql+psycopg://app_rw:…?sslmode=require` string |
+  | `DATABASE_URL_READONLY` | the same with `app_readonly` - used by `/reports/*` (falls back to `DATABASE_URL` if unset) |
   | `JWT_SECRET` | `python -c "import secrets;print(secrets.token_urlsafe(48))"` |
   | `CORS_ORIGINS` | `https://<your-web-domain>` |
   | `ENVIRONMENT` | `production` |

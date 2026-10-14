@@ -2,6 +2,9 @@
 
 Design spec for the Room Booking web client. Built before implementation.
 
+> **หมายเหตุ:** เอกสารนี้เป็นแบบร่างฉบับแรกก่อนเริ่มพัฒนา (ชื่อ "Aria", โทนสีและหน้าจอตามแผนเดิม)
+> เว็บจริงคือ **Tigger Oriental** - หน้าจอและสิทธิ์ที่ใช้งานจริงดู [`../README.md`](../README.md)
+
 **Two surfaces, one system:**
 - **Guest site** — editorial, image-forward, **Mandarin-Oriental-inspired** (serif display, warm off-white,
   a single gold accent, full-bleed photography):

@@ -76,7 +76,13 @@ The suite covers all functional modules:
 | 9 | Room administration (create, RBAC, status + audit) | `tests/test_room_admin.py` |
 | 10 | Ops API (rate plans, invoices, housekeeping, maintenance, audit; user admin: role-locked customers, disable/delete) | `tests/test_ops_api.py` |
 | 11 | Schema objects (views, functions, triggers, constraints) | `tests/test_schema_ops.py` |
+| 12 | Column filters (every staff table filters server-side, paging + totals stay right) | `tests/test_column_filters.py` |
+| 13 | Concurrency (BR-5 double booking under parallel requests) | `tests/test_concurrency.py` |
+| 14 | Entity coverage (add-ons, folio charges, payments, room-status history, sign-in log, guest IDs) | `tests/test_entity_coverage.py` |
+| 15 | Rate limit (sign-in bucket vs. looser session-refresh bucket) | `tests/test_rate_limit.py` |
+| 16 | Regression tests for the 2026-09-24 test-report findings | `tests/test_report_fixes.py` |
 | — | Infra (health, DB readiness, security headers) | `tests/test_health.py` |
+| — | Request ID header on every response | `tests/test_request_id.py` |
 
 ---
 
@@ -97,11 +103,11 @@ app/
 │                        live here (past-date, capacity, over-payment, rate-plan range, …)
 ├── services/            auth_service (login/lockout/audit) · booking_service (availability,
 │                        bill, transitions) · ops_service (rate plans, invoices, housekeeping,
-│                        maintenance, audit)
+│                        maintenance, audit) · addon_rules (add-on quantity caps, BR-29)
 ├── api/
 │   ├── deps.py          get_current_user, require_role(...), pagination
 │   └── v1/              auth · rooms · bookings · customers · reports · rate_plans · invoices
-│                        · housekeeping · maintenance · admin
+│                        · housekeeping · maintenance · services · admin
 └── exceptions.py        AppError hierarchy -> clean JSON (no stack traces)
 tests/                   pytest-asyncio + httpx ASGITransport, throwaway PG database
 ```
@@ -114,7 +120,7 @@ tests/                   pytest-asyncio + httpx ASGITransport, throwaway PG data
 | POST | `/auth/login` | public (rate-limited) |
 | POST | `/auth/refresh` | refresh cookie (rotated) |
 | POST | `/auth/logout` | authenticated |
-| GET  | `/auth/me` | authenticated |
+| GET / PATCH | `/auth/me` | GET: authenticated (own profile) · PATCH: guest edits own name / phone |
 | POST | `/auth/change-password` | authenticated (bumps `token_version` → all tokens die) |
 | GET  | `/room-types` | **public** — marketing site (carries `avg_rating` + `review_count`) |
 | GET  | `/room-types/{id}/reviews` | **public** — score, star distribution, recent comments |
@@ -129,27 +135,51 @@ tests/                   pytest-asyncio + httpx ASGITransport, throwaway PG data
 | POST / PATCH | `/services`, `/services/{id}` | manager — add, reprice, retire (never delete) |
 | POST | `/bookings` | customer (self, auto-assigns a room of the chosen type) · staff (for any guest) |
 | GET  | `/bookings`, `/bookings/{id}` | staff = all · customer = own only (IDOR-safe) |
+| GET  | `/bookings/status-counts` | authenticated — counts per status (scoped like `/bookings`) |
 | GET  | `/bookings/{id}/bill` | owner/staff — room + service − paid |
 | POST | `/bookings/{id}/check-in` `/check-out` | staff |
 | POST | `/bookings/{id}/cancel` | staff, or customer for own |
 | POST | `/bookings/{id}/payments` | staff |
+| POST | `/bookings/{id}/pay` | customer (own) or staff — guest checkout, clears the whole balance |
+| PATCH| `/bookings/{id}/dates` | customer (own) or staff — reschedule a pending / confirmed booking (same rooms, repriced) |
+| POST | `/bookings/{id}/no-show` | front desk — keeps the first night as a fee |
+| GET / POST | `/bookings/{id}/invoice` | GET: owner/staff · POST: front desk — issue the invoice |
 | POST / DELETE | `/bookings/{id}/services[/{service_id}]` | staff — post / remove a folio charge (open folio, no live invoice; removal refunds any overpayment) |
 | GET  | `/bookings/{id}/review` | owner/staff — the review for this stay, or 404 |
 | POST | `/bookings/{id}/review` | customer, own, after check-out |
 | GET  | `/customers?q=` | staff — guest directory + trips + lifetime value (paginated) |
+| GET  | `/customers/{id}` | front desk — one guest profile + stays |
 | PATCH| `/customers/{id}` | staff — name, phone, ID card / passport no. |
+| GET  | `/customers/me/summary` | guest — own trips, nights stayed, lifetime spend |
 | GET  | `/reports/revenue-by-room-type` `/reports/occupancy` | manager — SQL views (occupancy = last 24 months) |
+| GET  | `/reports/forecast` `/reports/rate-calendar` | manager — forward occupancy / nightly price grid (`fn_quote_room`) |
+| GET  | `/reports/daily-revenue` | accounting — `v_daily_revenue` |
 | GET  | `/reports/in-house` | front desk — `v_current_guests` + balance |
 | GET  | `/housekeeping/board?day=` | any staff — `v_housekeeping_board` (printable daily sheet) |
+| GET / POST / PATCH | `/housekeeping/tasks`, `/housekeeping/tasks/{id}` | GET: any staff · POST / PATCH: housekeeping |
+| POST | `/housekeeping/auto-assign` | housekeeping — spread pending tasks by workload |
+| GET  | `/housekeeping/summary` | authenticated — today's task counts |
 | GET  | `/maintenance/backlog` | any staff — `v_maintenance_open` (age in days) |
+| GET / POST | `/maintenance/tickets` | any staff — list / report a ticket |
+| PATCH| `/maintenance/tickets/{id}` | housekeeping — assign / resolve / close |
+| GET  | `/rate-plans/quote` | **public** — nightly price for a room type and date (`fn_quote_room`) |
+| GET  | `/rate-plans` | any staff |
+| POST / PATCH / DELETE | `/rate-plans`, `/rate-plans/{id}` | manager |
+| GET  | `/invoices`, `/invoices/stats` | accounting — ledger (`v_invoice_summary`) |
+| GET  | `/invoices/{id}` | owner/staff — invoice + lines |
+| POST | `/invoices/{id}/void` | accounting |
 | GET  | `/admin/auth-events` `/admin/auth-events/stats` | admin — the sign-in log (`auth_event`) |
-| GET  | `/admin/reviews` | staff — guest-feedback board |
+| GET  | `/admin/reviews` `/admin/reviews/stats` | staff — guest-feedback board |
+| GET  | `/admin/staff` | any staff — staff list (assignees) |
+| GET  | `/admin/audit` | manager — `audit_log` trail |
+| GET / POST | `/admin/users` | admin — list / create staff accounts |
 | PATCH / DELETE | `/admin/users/{id}` | admin — staff role change; customers only disable/delete (role locked) |
 
 ## Notes / decisions
 
-- **Only staff create bookings** (matches the proposal: customers *request*, พนักงานเคาน์เตอร์ *create*).
-  This also keeps `booking.staff_id` NOT NULL honest.
+- **Who creates bookings:** guests book for themselves (a room of the chosen type is auto-assigned)
+  and staff book for any guest. Guest bookings are attributed to the "Online Reservations" staff
+  record, which keeps `booking.staff_id` NOT NULL honest.
 - **Auth token model:** short access JWT (15 min, sent in body, kept in memory by the SPA) +
   rotating refresh JWT in an `HttpOnly; Secure; SameSite=Strict` cookie scoped to `/api/v1/auth`.
   `app_user.token_version` is the revocation lever (logout-all / password change).

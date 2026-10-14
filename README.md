@@ -9,13 +9,13 @@ FastAPI service and a React web client.
 | Folder | What |
 |---|---|
 | [`SECURITY.md`](SECURITY.md) | cross-layer security design + checklist |
-| [`01-proposal/`](01-proposal/proposal.md) | topic, scope, actors · **[`business-requirements.md`](01-proposal/business-requirements.md) / `.docx`** - the formal BRD: 46 FR, 28 BR (numbered as `schema.sql` cites them), 11 NFR, traceability of every table / view / function to its API and screen |
+| [`01-proposal/`](01-proposal/proposal.md) | topic, scope, actors · **[`business-requirements.md`](01-proposal/business-requirements.md) / `.docx`** - the formal BRD: 46 FR, 30 BR (numbered as `schema.sql` cites them), 11 NFR, traceability of every table / view / function to its API and screen |
 | [`02-design/`](02-design/Draft/relational-schema.md) | ER diagram (`ERD.drawio`) · relational schema · 1NF→3NF proof |
 | [`03-database/`](03-database/README.md) | `schema.sql` · `roles.sql` · `seed.sql` (155 rooms/9 floors, 1000 guests, ~25 yrs of stays + reviews) · `queries.sql` (Q1-Q22) - **the graded artifact** |
 | [`04-backend/`](04-backend/README.md) | FastAPI + SQLAlchemy 2 async · ~77 endpoints, every list endpoint paginated · 198 tests · business rules enforced in `schemas/` + `services/` |
 | [`05-frontend/`](05-frontend/README.md) | React 18 + Vite + TS · **fully bilingual site, guest and staff (English / ไทย)** - guest site (Mandarin-Oriental-style, photography) + staff portal `/admin` (20 screens incl. Reports, TapeChart, In-house guests, Add-on services, Sign-in activity; printable tax invoice / folio / housekeeping daily sheet) · per-role route guards · guest ratings, reviews, self-serve cancel + reschedule + no-show · client guardrails mirror the API rules · 81 vitest tests · `design/ui-ux.md` |
 | [`06-deploy/`](06-deploy/DEPLOY.md) | `docker-compose.yml` (db+api+web+`db-loader`+`history-loader`) · deploy runbook · [`history/`](06-deploy/history/README.md) - 27 years of consistent hotel history 2000-2026 (bookings, stays, housekeeping, repairs, payments, invoices, reviews, audit), 20 consistency checks before commit |
-| [`07-report/`](07-report/TG_roomBooking_report_6810301003.pdf) | Final Report (`TG_roomBooking_report_6810301003.pdf`) · presentation (`TG_roomBooking_6810301003.pdf`) · `slides.html` · demo script |
+| [`07-report/`](07-report/TG_roomBooking_report_6810301003.pdf) | Final Report (`TG_roomBooking_report_6810301003.pdf`) · presentation (`TG_roomBooking_6810301003.pdf`) |
 
 ## Quick start
 
